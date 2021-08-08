@@ -63,9 +63,17 @@ public class ApplicationCommandLineRunnerTest {
 
     static final String JAVA = Paths.get(System.getProperty("java.home"), "bin", "java").toString();
 
+    static final String JAVA_OPTIONS = getPropertyOrEnvironmentVariable(
+        "azure.cosmos.cassandra.java.options",
+        "");
+
     static final String JAR = getPropertyOrEnvironmentVariable(
         "azure.cosmos.cassandra.jar",
         null);
+
+    static final String LOG_PATH = getPropertyOrEnvironmentVariable(
+        "azure.cosmos.cassandra.log-path",
+        Paths.get(System.getProperty("user.home"), ".local", "var", "log").toString());
 
     static final String GLOBAL_ENDPOINT = getPropertyOrEnvironmentVariable(
         "azure.cosmos.cassandra.global-endpoint",
@@ -79,25 +87,17 @@ public class ApplicationCommandLineRunnerTest {
         "azure.cosmos.cassandra.password",
         null);
 
-    static final List<String> PREFERRED_REGIONS = Arrays.asList(getPropertyOrEnvironmentVariable(
-        "azure.cosmos.cassandra.preferred-regions",
-        "").split("\\s*,\\s*"));
+    static final String TRUSTSTORE_PATH = getPropertyOrEnvironmentVariable(
+        "azure.cosmos.cassandra.truststore-path",
+        null);
 
     static final String TRUSTSTORE_PASSWORD = getPropertyOrEnvironmentVariable(
         "azure.cosmos.cassandra.truststore-password",
         null);
 
-    static final String TRUSTSTORE_PATH = getPropertyOrEnvironmentVariable(
-        "azure.cosmos.cassandra.truststore-path",
-        null);
-
-    static final String LOG_PATH = getPropertyOrEnvironmentVariable(
-        "azure.cosmos.cassandra.log-path",
-        Paths.get(System.getProperty("user.home"), ".local", "var", "log").toString());
-
-    static final String JAVA_OPTIONS = getPropertyOrEnvironmentVariable(
-        "azure.cosmos.cassandra.java.options",
-        "");
+    static final List<String> PREFERRED_REGIONS = Arrays.asList(getPropertyOrEnvironmentVariable(
+        "azure.cosmos.cassandra.preferred-regions",
+        "").split("\\s*,\\s*"));
 
     private static final long TIMEOUT_IN_MINUTES = 2;
 
